@@ -1,76 +1,25 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Drug Interaction System</title>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-</head>
-<body>
-    <h2>Check Drug Interactions</h2>
-    <form action="/check_interaction" method="post">
-        <label>First Drug:</label><br>
-        <select name="drug1" class="drug-select" style="width: 300px;" required>
-            <option value="">Select a drug...</option>
-            {% for drug in drugs %}
-                <option value="{{ drug }}">{{ drug }}</option>
-            {% endfor %}
-        </select><br><br>
-
-        <label>Second Drug:</label><br>
-        <select name="drug2" class="drug-select" style="width: 300px;" required>
-            <option value="">Select a drug...</option>
-            {% for drug in drugs %}
-                <option value="{{ drug }}">{{ drug }}</option>
-            {% endfor %}
-        </select><br><br>
-
-        <button type="submit">Check Interaction</button>
-    </form>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.drug-select').select2();
-        });
-    </script>
-</body>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MATTCURLLY System</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; padding: 40px; text-align: center; }
-        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: inline-block; width: 100%; max-width: 600px; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
-        button { padding: 12px 25px; background-color: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        .result { margin-top: 20px; padding: 20px; border-radius: 10px; text-align: left; }
-        .high-risk { background-color: #f8d7da; border: 2px solid #dc3545; color: #721c24; }
-        .moderate-risk { background-color: #fff3cd; border: 2px solid #ffc107; color: #856404; }
-        .disclaimer { font-size: 0.75em; color: #888; margin-top: 20px; }
-    </style>
+    <title>Drug Interaction System</title>
 </head>
 <body>
-    <div class="container">
-        <h1>MATTCURLLY's Drug Interactions and Recommendation System</h1>
-        <form action="/check" method="GET">
-            <input type="text" name="drug1" placeholder="First Medicine" required>
-            <input type="text" name="drug2" placeholder="Second Medicine" required>
-            <button type="submit">Check Safety</button>
-        </form>
+    <h1>Check Drug Interactions</h1>
+    <form action="/check" method="post">
+        First Drug: <input type="text" name="drug1" required><br>
+        Second Drug: <input type="text" name="drug2" required><br>
+        <button type="submit">Check Safety</button>
+    </form>
 
-        {% if drug1 and drug2 %}
-            <div class="result {% if risk_level == 'High' %}high-risk{% else %}moderate-risk{% endif %}">
-                <h3>Result: {{ risk_level }} Risk</h3>
-                <p><strong>Effect:</strong> {{ side_effects }}</p>
-                <p><strong>Recommendation:</strong> {{ recommendation }}</p>
-            </div>
-        {% endif %}
-        
-        <p class="disclaimer">DISCLAIMER: This system is for educational use only. Always consult a licensed pharmacist or physician.</p>
+    {% if risk_level %}
+    <div style="margin-top:20px; padding:15px; border:1px solid #000;">
+        <h2>Results</h2>
+        <p><strong>Drugs:</strong> {{ drug1 }} & {{ drug2 }}</p>
+        <p><strong>Risk:</strong> {{ risk_level }}</p>
+        <p><strong>Effect:</strong> {{ side_effects }}</p>
+        <p><strong>Advice:</strong> {{ recommendation }}</p>
     </div>
+    {% endif %}
 </body>
->>>>>>> de1520ecdfa75f52454b441ed19b555cb03316b6
 </html>
