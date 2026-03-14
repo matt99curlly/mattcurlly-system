@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drug Interaction System</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Check Drug Interactions</h2>
+    <form action="/check_interaction" method="post">
+        <label>First Drug:</label><br>
+        <select name="drug1" class="drug-select" style="width: 300px;" required>
+            <option value="">Select a drug...</option>
+            {% for drug in drugs %}
+                <option value="{{ drug }}">{{ drug }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Second Drug:</label><br>
+        <select name="drug2" class="drug-select" style="width: 300px;" required>
+            <option value="">Select a drug...</option>
+            {% for drug in drugs %}
+                <option value="{{ drug }}">{{ drug }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Check Interaction</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.drug-select').select2();
+        });
+    </script>
+</body>
+</html>
