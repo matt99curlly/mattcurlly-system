@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 fastapi
 uvicorn
 jinja2
 pandas
-=======
-fastapi
-uvicorn
-jinja2
-httpx
->>>>>>> de1520ecdfa75f52454b441ed19b555cb03316b6
+python-multipart
