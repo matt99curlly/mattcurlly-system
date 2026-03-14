@@ -46,3 +46,8 @@ async def check_interaction(request: Request, drug1: str = Form(...), drug2: str
         "side_effects": result["effect"],
         "recommendation": result["rec"]
     })
+
+if __name__ == '__main__':
+    import uvicorn
+    # This runs the app locally for testing
+    uvicorn.run(app, host="0.0.0.0", port=8000)
